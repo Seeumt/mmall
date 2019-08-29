@@ -23,6 +23,7 @@ public class UserServiceImpl implements IUserService {
         if (user == null) {
             return ServerResponse.createByErrorMessage("密码错误");
         }
+        String username1 = user.getUsername();
 
         return null;
     }
