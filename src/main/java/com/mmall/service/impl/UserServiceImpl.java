@@ -7,8 +7,11 @@ import com.mmall.pojo.User;
 import com.mmall.service.IUserService;
 import com.mmall.util.MD5Util;
 import org.apache.commons.lang3.StringUtils;
+import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import javax.annotation.Resource;
 
 @Service("iUserService")
 public class UserServiceImpl implements IUserService {
@@ -78,7 +81,7 @@ public class UserServiceImpl implements IUserService {
     }
 
     @Override
-    public ServerResponse selectQusetion(String username) {
+    public ServerResponse selectQuestion(String username) {
         ServerResponse<String> validResponse = this.checkValid(username, Const.USERNAME);
         if (validResponse.isSuccess()) {
             return ServerResponse.createByErrorMessage("该用户不存在");
@@ -88,5 +91,13 @@ public class UserServiceImpl implements IUserService {
             return ServerResponse.createBySuccess(question);
         }
         return ServerResponse.createByErrorMessage("找回密码的问题是空的");
+    }
+
+    @Test
+    public void testlogin(){
+
+        UserServiceImpl userService = new UserServiceImpl();
+        ServerResponse<User> user1 = userService.login("admin", "admin");
+        System.out.println(user1);
     }
 }

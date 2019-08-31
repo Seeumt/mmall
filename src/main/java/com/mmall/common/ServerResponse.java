@@ -9,6 +9,7 @@ import java.io.Serializable;
  * 响应对象
  *
  * @param <T>
+ *
  */
 @JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)
 public class ServerResponse<T> implements Serializable {
@@ -36,7 +37,7 @@ public class ServerResponse<T> implements Serializable {
         this.msg = msg;
     }
     /*
-    这个字段不加处理，也会显示在json里 因为是public?
+        这个字段不加处理，也会显示在json里 因为是public?
      */
     @JsonIgnore
     public boolean isSuccess() {
